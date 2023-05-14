@@ -7,7 +7,7 @@
 }:
 
 rustPlatform.buildRustPackage rec {
-  pname = "gtk-exampl";
+  pname = "my_gui";
   version = "0.1.0";
 
   src = ./.;

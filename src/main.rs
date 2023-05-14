@@ -1,42 +1,32 @@
 use gtk::prelude::*;
 use gtk::{glib, Application, ApplicationWindow, Button};
-
-const APP_ID: &str = "org.gtk_rs.HelloWorld";
-
+const APP_ID: &str = "test";
 fn main() -> glib::ExitCode {
-    // Create a new application
+    //create a new application
     let app = Application::builder().application_id(APP_ID).build();
-
-    // Connect to "activate" signal of `app`
+    //connect to "active" signal of `app`
     app.connect_activate(build_ui);
-
-    // Run the application
+    //run the application
     app.run()
 }
-
 fn build_ui(app: &Application) {
-    // Create a button with label and margins
     let button = Button::builder()
-        .label("Press me!")
-        .margin_top(12)
-        .margin_bottom(12)
-        .margin_start(12)
-        .margin_end(12)
+        .label("Click me!")
+        .margin_top(10)
+        .margin_bottom(500)
+        .margin_start(400)
+        .margin_end(400)
         .build();
-
-    // Connect to "clicked" signal of `button`
     button.connect_clicked(|button| {
-        // Set the label to "Hello World!" after the button has been clicked on
+        //set the label to "Hello World!" after the button has clicked on
         button.set_label("Hello World!");
     });
-
-    // Create a window
+    //Create a window and set the title
     let window = ApplicationWindow::builder()
         .application(app)
-        .title("My GTK App")
+        .title("My Gtk App")
         .child(&button)
         .build();
-
-    // Present window
+    //present window
     window.present();
 }
