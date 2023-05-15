@@ -8,9 +8,9 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs = inputs@{ flake-parts, nixpkgs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      systems = nixpkgs.lib.systems.flakeExposed;
       imports = [
         inputs.flake-root.flakeModule
         inputs.mission-control.flakeModule
